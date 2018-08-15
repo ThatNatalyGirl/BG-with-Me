@@ -12,60 +12,73 @@ console.log('running index.js'.green)
 
 
 
-let messages = []
-
-// app.get('/', (req, res) => res.send('Hello World!'))
-app.get('/', function(req, res){
-	res.send('go to /message')
-})	
 
 
-app.get('/message', function(req, res){
-	console.log(req.body.text)
-	res.send(messages)
-})
 
-//get me all the messages since the last timestamp
-app.get('/message/since/:timestamp', function(req, res){
-	let lastMessageSinceUpdate = req.params.timestamp;
 
-	let recentMessages = messages.filter(function(message){
-		// if(message.timestamp > lastMessageSinceUpdate){
-		// 	return true;
-		// } else{
-		// 	return false;
-		// }
-		return message.timestamp > lastMessageSinceUpdate
-	})
+
+
+
+
+
+
+
+// let messages = []
+
+// // app.get('/', (req, res) => res.send('Hello World!'))
+// app.get('/', function(req, res){
+// 	res.send('go to /message')
+// })	
+
+
+// app.get('/message', function(req, res){
+// 	console.log(req.body.text)
+// 	res.send(messages)
+// })
+
+// //get me all the messages since the last timestamp
+// app.get('/message/since/:timestamp', function(req, res){
+// 	let lastMessageSinceUpdate = req.params.timestamp;
+
+// 	let recentMessages = messages.filter(function(message){
+// 		// if(message.timestamp > lastMessageSinceUpdate){
+// 		// 	return true;
+// 		// } else{
+// 		// 	return false;
+// 		// }
+// 		return message.timestamp > lastMessageSinceUpdate
+// 	})
 	
-	res.send(recentMessages)
-})
+// 	res.send(recentMessages)
+// })
 
-app.delete('/message/:index', function(req, res){
-	console.log("delete message index" + req.params.index)
-	messages.splice(req.params.index, 1)
-	res.send()
-})
+// app.delete('/message/:index', function(req, res){
+// 	console.log("delete message index" + req.params.index)
+// 	messages.splice(req.params.index, 1)
+// 	res.send()
+// })
 
-app.post('/message', function(req, res){
-	console.log(req.body.text)
+// app.post('/message', function(req, res){
+// 	console.log(req.body.text)
 
-	let newMessage = {
-		text: req.body.text,
-		username: req.body.username,
-		timestamp: new Date().getTime()
-	}
+// 	let newMessage = {
+// 		text: req.body.text,
+// 		username: req.body.username,
+// 		timestamp: new Date().getTime()
+// 	}
 
-	messages.push(newMessage)
+// 	messages.push(newMessage)
 
-	res.send([newMessage])
-})	
+// 	res.send([newMessage])
+// })	
 
-// app.listen(1234, () => console.log('Example app listening on port 3000!'))
-app.listen(1337, function(){
-	console.log('Example app listening on port 1337!')
-}) 
+// // app.listen(1234, () => console.log('Example app listening on port 3000!'))
+// app.listen(1337, function(){
+// 	console.log('Example app listening on port 1337!')
+// }) 
 
+
+////////////////////////
 
 
 
