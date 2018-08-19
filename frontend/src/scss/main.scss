@@ -1,21 +1,9 @@
-/* 
-==============================================
-CONTENT:	Project Name Here
-AUTHOR:		Your Name Here
-==============================================
-
-TABLE OF CONTENTS:
-
-0. Reset
-1. Main Layout
-2. Content
-
-==============================================
-*/
 
 /* 0. Reset ================================= */
 @import 'reset';
 
+$header-font: 'Rock Salt', cursive;
+$primary-font: 'Patrick Hand', cursive;
 
 /* 1. Main Layout ================================= */
 
@@ -24,81 +12,97 @@ TABLE OF CONTENTS:
 }
 
 body {
-	background: #ccc;
-	
+	background: #fff;
+	width: 100%;
+	height: 100vh;
 }
 
-
-
-
 /* 2. Content ================================= */
+header{
+	display: flex;
+	font-family: $header-font;
+	width: 100%;
+	padding: 0% 2%;
 
-.content {
-	position: relative;
-	font-family: sans-serif;
-	width: 90%;
-	max-width: 500px;
-	margin: 140px auto;
-	padding: 30px 20px 30px 30px;
-	.foreground {
-		position: relative;
-		z-index: 2;
-		transform: translateZ(100px);
-	}
-	.background {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		left: 0;
-		top: 0;
-		background: white;
-		z-index: 1;
-		// perspective: 2000px;
-		transition: 0.2s;
-		transform: translateX(20px) perspective(600px) rotateY(15deg);
-	}
-	&:hover .background {
-		transform: translateX(-30px) perspective(600px) rotateY(-15deg);		
-	}
-	.logo {
-		position: absolute;
-		top: -30px;
-		width: 60px;
-		z-index: 2;
-		transform: translateZ(100px);
-		transition: 0.3s;
+	.logo{
+		background: url(../img/logo.png) top no-repeat;
+		background-size: 100%;
+		width: 12%;	
+		height: 0;
+		padding-bottom: 11%;
 
-		&:hover {
-			transform: rotate(-0.4turn)
+		&:hover{
+			cursor: pointer;
 		}
 	}
-	h1 {
-		font-weight: 700;
-		font-size: 22pt;
-		margin: 15px 0;
+
+	h1{
+		font-size: 5vw;
+		color: #02906c;
+		padding: 2% 5%;
+		text-shadow: 2px 2px 5px #909582;
 	}
-	p {
-		color: #777;
-		// margin: 10px 0;
-		line-height: 140%;
+}
+
+//************* Home Page *************
+.home{
+	.about{
+		margin: 15px 2%;
+		font-family: $primary-font;
+		font-size: 1.5em;
+		box-shadow: 0 5px 10px 0 #909582;
+		padding: 10px 1%;
 	}
-	p.github {
-		font-size: 0.8em;
-		
-		a {
-			opacity: 0.2;
-			transition: 0.3s;
-			&:hover {
-				opacity: 1;
-				color: red;
+
+	.gaming{
+		background: url(../img/gamebg.jpg) top no-repeat;
+		background-size: 100%;
+		height: 0;
+		padding-bottom: 62%;
+		box-shadow: 0 5px 10px 0 #909582;
+		font-family: $primary-font;
+		display: flex;
+		justify-content: space-around;
+
+		a{
+			text-decoration: none;
+			color: #fff;
+			background: #02906c;
+			border: 3px solid #909582;
+			border-radius: 20px;
+			transition: .5s;
+			font-size: 4vw;
+			font-family: $header-font;
+			margin-top: 20%;
+			padding: 4% 2% 8%;
+
+			&:hover{
+				background: #000;
 			}
 		}
 	}
-	code {
-		position: absolute;
-		top: 20px;
-		right: 20px;
-		font-size: 0.8em;
-		opacity: 0.2;
+}
+
+//************* Find a Game Page *************
+
+.find-a-game{
+	header{
+		margin-bottom: 30px;
+	}
+
+	.map-sect{
+		width: 100%;
+		height: 70vh; 
+
+		#map{
+			height: 100%;
+		}	
 	}
 }
+
+
+
+
+
+
+

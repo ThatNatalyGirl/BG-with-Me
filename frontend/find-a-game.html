@@ -11,14 +11,14 @@
 		
 	</head>
 	<body>
-		<div class="content">
+		<div class="find-a-game">
 			<header>
-				<img class="logo" src="#" alt="logo">
+				<a class="logo" href="#"></a>
 				<h1>BG with Me</h1>
 				<nav></nav>
 			</header>
-			<section class="map">	
-				<!-- <map></map> -->
+			<section class="map-sect">	
+				<div id="map"></div>
 				<!-- google maps here with locations that have been posted -->
 			</section>
 		
@@ -26,6 +26,9 @@
 		</div>
 
 		<script src="dist/js/main.js"></script>
+		<script src="dist/js/googleMaps.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmYLb9hg543lBQyALzTU-pZnR9U5Um36g&callback=initMap"
+    async defer></script>
 
 	</body>
 </html>
