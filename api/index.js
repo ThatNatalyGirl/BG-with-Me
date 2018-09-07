@@ -11,15 +11,33 @@ app.use(bodyParser.urlencoded( {extended: true}))
 console.log('running index.js'.green)
 
 
+app.get('/', function(req, res){
+	res.send('Welcome to the Tag World. Add tag to the URL :D')
+})
 
+app.post('/gamePost', function(req, res){
+	res.send('How you add tags')
+	console.log("am I working?")
+	// console.log(req.body.username)
+	// console.log(req.body.players)
+	// var tagInfo = {
+	// 	word: req.body.tag,
+	// 	color: req.body.color
+	// }
+	// tags.push(tagInfo);
+})
 
+app.get('/gamePost', function(req, res) {
+	// res.send(tags)
 
+	//it's encoding it in json for us.
+	//this is sending the tags array so that we can see it on our localhost:####/gamePost
+})
 
-
-
-
-
-
+// app.listen(1235, () => console.log('Example app listening on port 1235!'))
+app.listen(1235, function(){
+	console.log('Listening on port 1235!')
+}) 
 
 
 
@@ -82,7 +100,7 @@ console.log('running index.js'.green)
 
 
 
-// app.post('/tag', function(req, res){
+// app.post('/gamePost', function(req, res){
 // 	//req.body.tag is using the body parser going through the giant req and then finding the tag property
 // 	res.send('How you add tags')
 // 	//this is looking into the req and since we sent it in the main js we're just pulling it out by finding it's name
@@ -95,10 +113,10 @@ console.log('running index.js'.green)
 // 	tags.push(tagInfo);
 // })
 
-// app.get('/tag', function(req, res) {
+// app.get('/gamePost', function(req, res) {
 // 	res.send(tags)
 // 	//it's encoding it in json for us.
-// 	//this is sending the tags array so that we can see it on our localhost:####/tag
+// 	//this is sending the tags array so that we can see it on our localhost:####/gamePost
 // })
 
 

@@ -40,7 +40,7 @@ header{
 		font-size: 5vw;
 		color: #02906c;
 		padding: 2% 5%;
-		text-shadow: 2px 2px 5px #909582;
+		text-shadow: 2px 2px 5px #000;
 	}
 }
 
@@ -101,6 +101,44 @@ header{
 }
 
 
+//************* Find a Game Page *************
+
+.start-game-form{
+
+	&::after{
+		content: "";
+		background: url(../img/dicebg.jpg) center no-repeat;
+		background-size: cover;
+		filter: brightness(70%);
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: -1;  
+	}
+
+	form{
+		margin: 5% 5%;
+		font-family: $primary-font;
+		font-size: 1.9em;
+		color: #fff;
+		text-shadow: 2px 2px 5px #000;
+
+		h2{
+			font-size: 1.7em;
+			margin-bottom: 4%;
+		}
+
+		div{
+			margin-bottom: 2%;
+
+			label{
+
+			}
+		}
+	}
+}
 
 
 

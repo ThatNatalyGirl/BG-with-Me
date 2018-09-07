@@ -88,7 +88,7 @@ header h1 {
 	font-size: 5vw;
 	color: #02906c;
 	padding: 2% 5%;
-	text-shadow: 2px 2px 5px #909582;
+	text-shadow: 2px 2px 5px #000;
 }
 
 .home .about {
@@ -138,6 +138,36 @@ header h1 {
 
 .find-a-game .map-sect #map {
 	height: 100%;
+}
+
+.start-game-form::after {
+	content: "";
+	background: url(../img/dicebg.jpg) center no-repeat;
+	background-size: cover;
+	filter: brightness(70%);
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.start-game-form form {
+	margin: 5% 5%;
+	font-family: "Patrick Hand", cursive;
+	font-size: 1.9em;
+	color: #fff;
+	text-shadow: 2px 2px 5px #000;
+}
+
+.start-game-form form h2 {
+	font-size: 1.7em;
+	margin-bottom: 4%;
+}
+
+.start-game-form form div {
+	margin-bottom: 2%;
 }
 
 /*# sourceMappingURL=main.css.map */
