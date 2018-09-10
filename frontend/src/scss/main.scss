@@ -101,7 +101,7 @@ header{
 }
 
 
-//************* Find a Game Page *************
+//************* Start a Game Page *************
 
 .start-game-form{
 
@@ -133,8 +133,36 @@ header{
 		div{
 			margin-bottom: 2%;
 
-			label{
+			input{
+				border-radius: 5px;
+				font-size: .7em;
+				font-family: $primary-font;
 
+				&::placeholder{
+					font-style: italic;
+					color: #ddd;
+				}
+			}
+
+			textarea{
+				border-radius: 5px;
+				font-size: .7em;
+				font-family: $primary-font;
+				width: 100%;
+				margin: 10px 0 0;
+			}	
+		}
+
+		.eventCreated{
+			color: #02906c;
+			font-family: $header-font;
+			border-radius: 5px;
+			font-size: .5em;
+
+			&:hover{
+				background: #02906c;
+				color: #fff;
+				cursor: pointer;
 			}
 		}
 	}

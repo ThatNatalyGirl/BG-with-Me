@@ -170,4 +170,36 @@ header h1 {
 	margin-bottom: 2%;
 }
 
+.start-game-form form div input {
+	border-radius: 5px;
+	font-size: .7em;
+	font-family: "Patrick Hand", cursive;
+}
+
+.start-game-form form div input::placeholder {
+	font-style: italic;
+	color: #ddd;
+}
+
+.start-game-form form div textarea {
+	border-radius: 5px;
+	font-size: .7em;
+	font-family: "Patrick Hand", cursive;
+	width: 100%;
+	margin: 10px 0 0;
+}
+
+.start-game-form form .eventCreated {
+	color: #02906c;
+	font-family: "Rock Salt", cursive;
+	border-radius: 5px;
+	font-size: .5em;
+}
+
+.start-game-form form .eventCreated:hover {
+	background: #02906c;
+	color: #fff;
+	cursor: pointer;
+}
+
 /*# sourceMappingURL=main.css.map */
