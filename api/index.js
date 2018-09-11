@@ -10,25 +10,32 @@ app.use(bodyParser.urlencoded( {extended: true}))
 
 console.log('running index.js'.green)
 
+let currentGames = []
 
 app.get('/', function(req, res){
-	res.send('Welcome to the Tag World. Add tag to the URL :D')
+	res.send('Add /gamePost please to the URL :D')
 })
 
-app.post('/gamePost', function(req, res){
-	res.send('How you add tags')
+app.get('/gamePost', function(req, res){
+	res.send(currentGames)
 	console.log("am I working?")
-	// console.log(req.body.username)
-	// console.log(req.body.players)
-	// var tagInfo = {
-	// 	word: req.body.tag,
-	// 	color: req.body.color
-	// }
-	// tags.push(tagInfo);
 })
 
-app.get('/gamePost', function(req, res) {
-	// res.send(tags)
+app.post('/gamePost', function(req, res) {
+	console.log("am I getting it?")
+	let newGame = {
+		username: req.body.username,
+		game: req.body.game,
+		players: req.body.players,
+		locatioInfo: req.body.locatioInfo,
+		address: req.body.address,
+		time: req.body.time,
+		description: req.body.description,
+	}
+
+	currentGames.push(newGame)
+
+	res.send([newGame])
 
 	//it's encoding it in json for us.
 	//this is sending the tags array so that we can see it on our localhost:####/gamePost
