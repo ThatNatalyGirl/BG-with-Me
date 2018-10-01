@@ -29,6 +29,8 @@ app.post('/gamePost', function(req, res) {
 		players: req.body.players,
 		locatioInfo: req.body.locatioInfo,
 		address: req.body.address,
+		lat: req.body.lat,
+		long: req.body.long,
 		time: req.body.time,
 		description: req.body.description,
 	}
