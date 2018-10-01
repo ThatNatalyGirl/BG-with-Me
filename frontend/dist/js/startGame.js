@@ -9,6 +9,7 @@ var createNewGame = function createNewGame() {
 	var playersValue = document.querySelector('[name="players"]').value;
 	var locationInfoValue = document.querySelector('[name="location-info"]').value;
 	var addressValue = document.querySelector('[name="address"]').value;
+	var dateValue = document.querySelector('[name="date"]').value;
 	var timeValue = document.querySelector('[name="time"]').value;
 	var descriptionValue = document.querySelector('[name="description"]').value;
 	console.log("button clicked");
@@ -21,6 +22,7 @@ var createNewGame = function createNewGame() {
 		lat: lat,
 		long: long,
 		address: addressValue,
+		date: dateValue,
 		time: timeValue,
 		description: descriptionValue
 	}).then(function (response) {

@@ -7,6 +7,7 @@ let createNewGame = function(){
 	let playersValue = document.querySelector('[name="players"]').value
 	let locationInfoValue = document.querySelector('[name="location-info"]').value
 	let addressValue = document.querySelector('[name="address"]').value
+	let dateValue = document.querySelector('[name="date"]').value
 	let timeValue = document.querySelector('[name="time"]').value
 	let descriptionValue = document.querySelector('[name="description"]').value
 	console.log("button clicked")
@@ -20,6 +21,7 @@ let createNewGame = function(){
 		lat: lat,
 		long: long,
 		address: addressValue,
+		date: dateValue,
 		time: timeValue,
 		description: descriptionValue,
 	})

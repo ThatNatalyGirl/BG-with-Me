@@ -125,6 +125,7 @@ header h1 {
 
 .home .gaming a:hover {
 	background: #000;
+	cursor: pointer;
 }
 
 .find-a-game header {
@@ -138,6 +139,71 @@ header h1 {
 
 .find-a-game .map-sect #map {
 	height: 100%;
+}
+
+.location-marker {
+	font-family: "Patrick Hand", cursive;
+}
+
+.location-marker h2 {
+	font-size: 1.9em;
+	text-align: center;
+}
+
+.location-marker p {
+	font-size: 1.2em;
+}
+
+.location-marker p span {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.location-marker a {
+	text-decoration: none;
+	color: #fff;
+	background: #02906c;
+	border: 3px solid #909582;
+	border-radius: 20px;
+	transition: .5s;
+	font-size: 1em;
+	font-family: "Rock Salt", cursive;
+	padding: 0 2%;
+}
+
+.location-marker a:hover {
+	background: #000;
+	cursor: pointer;
+}
+
+.join-game-div {
+	background: pink;
+	width: 96%;
+	padding: 20px 2%;
+	margin: 20px 2%;
+	font-family: "Patrick Hand", cursive;
+}
+
+.join-game-div .button-div {
+	text-align: center;
+}
+
+.join-game-div .button-div a {
+	text-decoration: none;
+	color: #fff;
+	background: #02906c;
+	border: 3px solid #909582;
+	border-radius: 20px;
+	transition: .5s;
+	font-size: 1em;
+	font-family: "Rock Salt", cursive;
+	padding: 0 2%;
+	margin: 0 2%;
+}
+
+.join-game-div .button-div a:hover {
+	background: #000;
+	cursor: pointer;
 }
 
 .start-game-form::after {
@@ -201,17 +267,6 @@ header h1 {
 	background: #02906c;
 	color: #fff;
 	cursor: pointer;
-}
-
-#start-game-map {
-	width: 100%;
-	height: 300px;
-}
-
-.join-game-div {
-	background: blue;
-	height: 300px;
-	width: 300px;
 }
 
 /*# sourceMappingURL=main.css.map */
