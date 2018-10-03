@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded( {extended: true}))
 console.log('running index.js'.green)
 
 let currentGames = []
+let gameIDCounter = 0;
 
 app.get('/', function(req, res){
 	res.send('Add /game please to the URL :D')
@@ -28,22 +29,23 @@ app.get('/game', function(req, res){
 	})
 
 	res.send(filteredGames)
-		console.log("am I working?")
+	console.log("am I working?")
 })
 
 app.post('/game', function(req, res) {
 	console.log("am I getting it?")
 	let newGame = {
+		id: gameIDCounter++,
 		username: req.body.username,
 		game: req.body.game,
-		players: req.body.players,
+		players: parseInt(req.body.players),
 		locatioInfo: req.body.locatioInfo,
 		address: req.body.address,
 		lat: req.body.lat,
 		long: req.body.long,
 		time: req.body.time,
 		date: req.body.date,
-		description: "why won't you work"
+		description: req.body.description
 	}
 
 	currentGames.push(newGame)
@@ -54,9 +56,17 @@ app.post('/game', function(req, res) {
 	//this is sending the tags array so that we can see it on our localhost:####/game
 })
 
+app.post('/game/:id', function(req, res) {
+	console.log("got a POST request for /game/:id, req.params is:");
+	console.log(req.params.id)
+	let id = req.params.id;
+	let foundGame = currentGames.find(function(game) {
+		return game.id == id
+	})
+	foundGame.players--
+	// user wants to lower the number of player slots in game "i"
 
-app.post('/game/:index', function(req, res) {
-	req.params.index
+	res.send()
 })
 
 // app.listen(1235, () => console.log('Example app listening on port 1235!'))

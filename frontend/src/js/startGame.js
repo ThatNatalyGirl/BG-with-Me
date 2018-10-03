@@ -43,7 +43,6 @@ let createNewGame = function(e){
 	});
 }
 
-document.querySelector('button.eventCreated').addEventListener("click", createNewGame);
 
 
 var autocomplete;
@@ -52,61 +51,34 @@ var defaultBounds = new google.maps.LatLngBounds(
 		new google.maps.LatLng(33.7902, -84.1880),
 		new google.maps.LatLng(33.7474, -84.4880));
 
-var input = document.getElementById('address');
 var options = {
 	bounds: defaultBounds,
 	types: ['establishment']
 };
 	
-autocomplete = new google.maps.places.Autocomplete(input, options);
+autocomplete = new google.maps.places.Autocomplete(document.querySelector('#address'), options);
 
 
-var geocoder;
 
-function codeAddress() {
-	var address = input.value;
-	console.log(address)
-	geocoder = new google.maps.Geocoder();
-	geocoder.geocode( {'address': address}, function(results) {
-		// map.setCenter(results[0].geometry.location);
-		// var marker = new google.maps.Marker({
-		// 	map: map,
-		// 	position: results[0].geometry.location
-		// });
+function getLatitudeLongitude() {
+	console.log("getLatitudeLongitude")
+	var geocoder = new google.maps.Geocoder();
+	
+	geocoder.geocode({
+		'address': document.querySelector('#address').value
+	}, function (results, status) {
+		console.log(results)
+		if (status == google.maps.GeocoderStatus.OK && results.length) {
+			lat = results[0].geometry.location.lat();
+			long = results[0].geometry.location.lng();
+		}
 	});
-	console.log(geocoder)
-
-	getLatitudeLongitude(showResult, address)
-}
-
-document.querySelector(".eventCreated").addEventListener("onclick", codeAddress())
-
-
-function showResult(result) {
-	lat = result.geometry.location.lat();
-	long = result.geometry.location.lng();
-}
-
-function getLatitudeLongitude(callback, address) {
-	address = address;
-	// Initialize the Geocoder
-	geocoder = new google.maps.Geocoder();
-	if (geocoder) {
-		geocoder.geocode({
-			'address': address
-		}, function (results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-				callback(results[0]);
-			}
-		});
-	}
 }
 
 
 
-
-
-
+document.querySelector("#address").addEventListener("blur", getLatitudeLongitude)
+document.querySelector('.eventCreated').addEventListener("click", createNewGame);
 
 	
 

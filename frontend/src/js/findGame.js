@@ -104,19 +104,17 @@ function displayJoinGameOptions(gameIndex) {
 		// 	console.log("ack")
 		// }	
 		// var currentPlayers = currentGame.players--
-		axios.post('http://178.128.76.205:1235/game/' + currentGame, {
-			players: currentGame.players--
-		})
 
-		.then(function (response) {
-			console.log('here is the get response data for key:', response.data);
 		// do ajax call to join the game (-- the number of player slots )
-		// then() { 
-			currentGame.players--
-			joinGameCurrentSlots.innerHTML = currentGame.players;
+		axios
+			.post('http://178.128.76.205:1235/game/' + currentGame.id)
+			.then(function (response) {
+				console.log('here is the get response data for key:', response.data);
+				currentGame.players--
+				joinGameCurrentSlots.innerHTML = currentGame.players;
 
-			console.log(currentGame.players)
-		// } 
+				console.log(currentGame.players)
+			})
 	});
 }
 

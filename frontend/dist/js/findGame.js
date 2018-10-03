@@ -11,7 +11,7 @@ function initMap() {
 	});
 
 	//Get the info from the games started
-	axios.get('http://178.128.76.205:1235/gamePost', {}).then(function (response) {
+	axios.get('http://178.128.76.205:1235/game', {}).then(function (response) {
 		console.log('here is the get response data for key:', response.data);
 
 		currentGames = response.data;
@@ -100,15 +100,16 @@ function displayJoinGameOptions(gameIndex) {
 		// 	joinGameDiv.style.display = "none"
 		// 	console.log("ack")
 		// }	
-
+		// var currentPlayers = currentGame.players--
 
 		// do ajax call to join the game (-- the number of player slots )
-		// then() { 
-		currentGame.players--;
-		joinGameCurrentSlots.innerHTML = currentGame.players;
+		axios.post('http://178.128.76.205:1235/game/' + currentGame.id).then(function (response) {
+			console.log('here is the get response data for key:', response.data);
+			currentGame.players--;
+			joinGameCurrentSlots.innerHTML = currentGame.players;
 
-		console.log(currentGame.players);
-		// } 
+			console.log(currentGame.players);
+		});
 	});
 }
 
