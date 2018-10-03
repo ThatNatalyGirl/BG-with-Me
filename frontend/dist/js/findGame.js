@@ -63,6 +63,11 @@ function displayJoinGameOptions(gameIndex) {
 
 	var joinGameDiv = document.createElement('div');
 	var joinGameTitle = document.createElement('h2');
+	var joinGameUser = document.createElement('p');
+	var joinGameLocationInfo = document.createElement('p');
+	var joinGameAddress = document.createElement('p');
+	var joinGameDate = document.createElement('p');
+	var joinGameTime = document.createElement('p');
 	var joinGameDescription = document.createElement('p');
 	var joinGameCurrentSlots = document.createElement('p');
 	var buttonDiv = document.createElement('div');
@@ -71,6 +76,11 @@ function displayJoinGameOptions(gameIndex) {
 
 	document.body.appendChild(joinGameDiv);
 	joinGameDiv.appendChild(joinGameTitle);
+	joinGameDiv.appendChild(joinGameUser);
+	joinGameDiv.appendChild(joinGameLocationInfo);
+	joinGameDiv.appendChild(joinGameAddress);
+	joinGameDiv.appendChild(joinGameDate);
+	joinGameDiv.appendChild(joinGameTime);
 	joinGameDiv.appendChild(joinGameDescription);
 	joinGameDiv.appendChild(joinGameCurrentSlots);
 	joinGameDiv.appendChild(buttonDiv);
@@ -84,24 +94,23 @@ function displayJoinGameOptions(gameIndex) {
 	dontJoinGameButton.classList.add("cancel");
 
 	joinGameTitle.innerHTML = currentGame.game;
-	joinGameDescription.innerHTML = currentGame.description;
+	joinGameUser.innerHTML = "Who: " + currentGame.username;
+	joinGameLocationInfo.innerHTML = "Where: " + currentGame.locatioInfo;
+	joinGameAddress.innerHTML = "Address: " + currentGame.address;
+	joinGameDescription.innerHTML = "Why: " + currentGame.description;
+	joinGameDate.innerHTML = "When: " + currentGame.date;
+	joinGameTime.innerHTML = "Time: " + currentGame.time;
+	joinGameCurrentSlots.innerHTML = "Slots Available: " + currentGame.players;
 	joinGameButton.innerHTML = "Join This Game";
 	dontJoinGameButton.innerHTML = "Cancel";
-	joinGameCurrentSlots.innerHTML = currentGame.players;
 
 	// var	slot = joinGameCurrentSlots.innerHTML
 
 	joinGameButton.addEventListener('click', function () {
-		// slot --
-		// joinGameCurrentSlots.innerHTML = slot
-		// console.log ("slot ", slot, currentGame.players)	
-
-		// if (joinGameCurrentSlots.innerHTML == 0 ) {
-		// 	joinGameDiv.style.display = "none"
-		// 	console.log("ack")
-		// }	
-		// var currentPlayers = currentGame.players--
-
+		if (joinGameCurrentSlots.innerHTML <= 1) {
+			joinGameDiv.style.display = "none";
+			console.log("ack");
+		}
 		// do ajax call to join the game (-- the number of player slots )
 		axios.post('http://178.128.76.205:1235/game/' + currentGame.id).then(function (response) {
 			console.log('here is the get response data for key:', response.data);
