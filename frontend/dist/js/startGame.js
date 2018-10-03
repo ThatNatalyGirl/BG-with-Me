@@ -3,7 +3,8 @@
 var lat = "";
 var long = "";
 
-var createNewGame = function createNewGame() {
+var createNewGame = function createNewGame(e) {
+	event.preventDefault();
 	var usernameValue = document.querySelector('[name="username"]').value;
 	var gameValue = document.querySelector('[name="game"]').value;
 	var playersValue = document.querySelector('[name="players"]').value;
@@ -11,10 +12,10 @@ var createNewGame = function createNewGame() {
 	var addressValue = document.querySelector('[name="address"]').value;
 	var dateValue = document.querySelector('[name="date"]').value;
 	var timeValue = document.querySelector('[name="time"]').value;
-	var descriptionValue = document.querySelector('[name="description"]').value;
+	var descriptionValue = document.querySelector('#description').value;
 	console.log("button clicked");
 
-	axios.post('http://localhost:1235/gamePost', {
+	axios.post('http://178.128.76.205:1235/game', {
 		username: usernameValue,
 		game: gameValue,
 		players: playersValue,
@@ -42,8 +43,6 @@ var createNewGame = function createNewGame() {
 
 document.querySelector('button.eventCreated').addEventListener("click", createNewGame);
 
-console.log("I'm a map");
-
 var autocomplete;
 //for Autocompleteing Address in Start-a-Game
 var defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(33.7902, -84.1880), new google.maps.LatLng(33.7474, -84.4880));
@@ -64,18 +63,17 @@ function codeAddress() {
 	geocoder = new google.maps.Geocoder();
 	geocoder.geocode({ 'address': address }, function (results) {
 		// map.setCenter(results[0].geometry.location);
-		var marker = new google.maps.Marker({
-			map: map,
-			position: results[0].geometry.location
-		});
+		// var marker = new google.maps.Marker({
+		// 	map: map,
+		// 	position: results[0].geometry.location
+		// });
 	});
 	console.log(geocoder);
 
 	getLatitudeLongitude(showResult, address);
 }
 
-// document.querySelector(".eventCreated").addEventListener("onclick", codeAddress())
-
+document.querySelector(".eventCreated").addEventListener("onclick", codeAddress());
 
 function showResult(result) {
 	lat = result.geometry.location.lat();
@@ -83,7 +81,6 @@ function showResult(result) {
 }
 
 function getLatitudeLongitude(callback, address) {
-	// If adress is not supplied, use default value 'Ferrol, Galicia, Spain'
 	address = address;
 	// Initialize the Geocoder
 	geocoder = new google.maps.Geocoder();

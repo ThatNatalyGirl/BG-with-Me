@@ -2,19 +2,20 @@
 
 //for The Actual Map on Find-a-Game
 var map;
+var currentGames; // array of game data, filled later by ajax
 
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: { lat: 33.7490, lng: -84.3880 },
-		zoom: 5
+		zoom: 12
 	});
 
 	//Get the info from the games started
-	axios.get('http://localhost:1235/gamePost', {}).then(function (response) {
+	axios.get('http://178.128.76.205:1235/gamePost', {}).then(function (response) {
 		console.log('here is the get response data for key:', response.data);
 
-		var currentGames = response.data;
-		currentGames.forEach(function (game) {
+		currentGames = response.data;
+		currentGames.forEach(function (game, i) {
 			var latLng = { lat: game.lat, lng: game.long };
 
 			var marker = new google.maps.Marker({
@@ -24,33 +25,42 @@ function initMap() {
 				animation: google.maps.Animation.DROP
 			});
 
-			console.log(game.players);
+			console.log(game.description);
 
-			var currentSlots = game.players;
+			// var infoWindowContent = 
+			// 	`<div class="location-marker"> 
+			// 		<h1>${i}</h1>
+			// 		<h2>`+ game.game + `</h2>
+			// 		</br>
+			// 		<p><span>Who's Idea:</span> `+ game.username + `</p>
+			// 		<p><span>Where:</span> `+ game.locatioInfo + `</p>
+			// 		<p><span>Address:</span> `+ game.address + `</p>
+			// 		<p><span>Who :</span> `+ `Me & ` + game.players + ` players</p>
+			// 		<p><span>When:</span> `+ game.date + `</p>
+			// 		<p><span>What Time:</span> `+ game.time + `</p>
+			// 		<p class="slots-avail"><span>Slots Available:</span> `+ game.players + `</p>
+			// 		</br>
+			// 		<a class="join-button" onclick="displayJoinGameOptions(${i})"> See Game</a>
+			// 	</div>`
+			// ;
 
-			var data = '<div class="location-marker"> \n\t\t\t\t\t<h2>' + game.game + '</h2>\n\t\t\t\t\t</br>\n\t\t\t\t\t<p><span>Who\'s Idea:</span> ' + game.username + '</p>\n\t\t\t\t\t<p><span>Where:</span> ' + game.locatioInfo + '</p>\n\t\t\t\t\t<p><span>Address:</span> ' + game.address + '</p>\n\t\t\t\t\t<p><span>Who :</span> ' + 'Me & ' + game.players + ' players</p>\n\t\t\t\t\t<p><span>When:</span> ' + game.date + '</p>\n\t\t\t\t\t<p><span>What Time:</span> ' + game.time + '</p>\n\t\t\t\t\t<p><span>Slots Available:</span> ' + currentSlots + '</p>\n\t\t\t\t\t</br>\n\t\t\t\t\t<a class="join-button" onclick="joinGame()"> See Game</a>\n\t\t\t\t</div>';
-
-			var infowindow = new google.maps.InfoWindow({
-				content: data,
-				maxWidth: 200
-			});
+			// var infowindow = new google.maps.InfoWindow({
+			// 	content: infoWindowContent,
+			// 	maxWidth: 200
+			// });
 
 			google.maps.event.addListener(marker, 'click', function () {
-				infowindow.open(map, marker);
+				// infowindow.open(map,marker);
+				displayJoinGameOptions(i); // skipping the info window entirely
 			});
-
-			displayJoinGameOptions(game);
 		});
 	});
 }
 
-function joinGame() {
-	axios.get('http://localhost:1235/gamePost', {}).then(function (response) {
-		console.log(response.data);
-	});
-}
+function displayJoinGameOptions(gameIndex) {
 
-function displayJoinGameOptions(currentGame) {
+	var currentGame = currentGames[gameIndex];
+
 	var joinGameDiv = document.createElement('div');
 	var joinGameTitle = document.createElement('h2');
 	var joinGameDescription = document.createElement('p');
@@ -74,16 +84,32 @@ function displayJoinGameOptions(currentGame) {
 	dontJoinGameButton.classList.add("cancel");
 
 	joinGameTitle.innerHTML = currentGame.game;
-	joinGameDescription.innerHTML = "DESCRIPTION NEEDS TO GO HERE ONCE YOU FIGURE IT OUT!!!!!!!!!!!!!";
+	joinGameDescription.innerHTML = currentGame.description;
 	joinGameButton.innerHTML = "Join This Game";
 	dontJoinGameButton.innerHTML = "Cancel";
 	joinGameCurrentSlots.innerHTML = currentGame.players;
 
-	// joinGameButton.event.addEventListener('click', function() {
-	// 	// var	slot = joinGameCurrentSlots.value
-	// slot -- 
-	// 	console.log ("slot")		
-	// });
+	// var	slot = joinGameCurrentSlots.innerHTML
+
+	joinGameButton.addEventListener('click', function () {
+		// slot --
+		// joinGameCurrentSlots.innerHTML = slot
+		// console.log ("slot ", slot, currentGame.players)	
+
+		// if (joinGameCurrentSlots.innerHTML == 0 ) {
+		// 	joinGameDiv.style.display = "none"
+		// 	console.log("ack")
+		// }	
+
+
+		// do ajax call to join the game (-- the number of player slots )
+		// then() { 
+		currentGame.players--;
+		joinGameCurrentSlots.innerHTML = currentGame.players;
+
+		console.log(currentGame.players);
+		// } 
+	});
 }
 
 // Make slots available a countdown sort of thing that goes down as you join the game. 

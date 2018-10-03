@@ -13,15 +13,25 @@ console.log('running index.js'.green)
 let currentGames = []
 
 app.get('/', function(req, res){
-	res.send('Add /gamePost please to the URL :D')
+	res.send('Add /game please to the URL :D')
 })
 
-app.get('/gamePost', function(req, res){
-	res.send(currentGames)
-	console.log("am I working?")
+app.get('/supersecretclearalldataroute', function(req, res){
+	currentGames = []
+	res.send('BOOOOOOMM all gone')
 })
 
-app.post('/gamePost', function(req, res) {
+app.get('/game', function(req, res){
+	// filter game list to remove games that have passed, and full games
+	let filteredGames = currentGames.filter(function(game) {
+		return game.players > 0
+	})
+
+	res.send(filteredGames)
+		console.log("am I working?")
+})
+
+app.post('/game', function(req, res) {
 	console.log("am I getting it?")
 	let newGame = {
 		username: req.body.username,
@@ -33,7 +43,7 @@ app.post('/gamePost', function(req, res) {
 		long: req.body.long,
 		time: req.body.time,
 		date: req.body.date,
-		description: req.body.description,
+		description: "why won't you work"
 	}
 
 	currentGames.push(newGame)
@@ -41,7 +51,12 @@ app.post('/gamePost', function(req, res) {
 	res.send([newGame])
 
 	//it's encoding it in json for us.
-	//this is sending the tags array so that we can see it on our localhost:####/gamePost
+	//this is sending the tags array so that we can see it on our localhost:####/game
+})
+
+
+app.post('/game/:index', function(req, res) {
+	req.params.index
 })
 
 // app.listen(1235, () => console.log('Example app listening on port 1235!'))

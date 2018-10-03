@@ -1,7 +1,8 @@
 let lat = ""
 let long = ""
 
-let createNewGame = function(){
+let createNewGame = function(e){
+	event.preventDefault()
 	let usernameValue = document.querySelector('[name="username"]').value
 	let gameValue = document.querySelector('[name="game"]').value
 	let playersValue = document.querySelector('[name="players"]').value
@@ -9,11 +10,11 @@ let createNewGame = function(){
 	let addressValue = document.querySelector('[name="address"]').value
 	let dateValue = document.querySelector('[name="date"]').value
 	let timeValue = document.querySelector('[name="time"]').value
-	let descriptionValue = document.querySelector('[name="description"]').value
+	let descriptionValue = document.querySelector('#description').value
 	console.log("button clicked")
 
 
-	axios.post('http://localhost:1235/gamePost', {
+	axios.post('http://178.128.76.205:1235/game', {
 		username: usernameValue,
 		game: gameValue,
 		players: playersValue,
@@ -45,9 +46,6 @@ let createNewGame = function(){
 document.querySelector('button.eventCreated').addEventListener("click", createNewGame);
 
 
-
-console.log("I'm a map")
-
 var autocomplete;
 //for Autocompleteing Address in Start-a-Game
 var defaultBounds = new google.maps.LatLngBounds(
@@ -71,17 +69,17 @@ function codeAddress() {
 	geocoder = new google.maps.Geocoder();
 	geocoder.geocode( {'address': address}, function(results) {
 		// map.setCenter(results[0].geometry.location);
-		var marker = new google.maps.Marker({
-			map: map,
-			position: results[0].geometry.location
-		});
+		// var marker = new google.maps.Marker({
+		// 	map: map,
+		// 	position: results[0].geometry.location
+		// });
 	});
 	console.log(geocoder)
 
 	getLatitudeLongitude(showResult, address)
 }
 
-// document.querySelector(".eventCreated").addEventListener("onclick", codeAddress())
+document.querySelector(".eventCreated").addEventListener("onclick", codeAddress())
 
 
 function showResult(result) {
@@ -90,7 +88,6 @@ function showResult(result) {
 }
 
 function getLatitudeLongitude(callback, address) {
-	// If adress is not supplied, use default value 'Ferrol, Galicia, Spain'
 	address = address;
 	// Initialize the Geocoder
 	geocoder = new google.maps.Geocoder();
