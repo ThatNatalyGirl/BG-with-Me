@@ -109,7 +109,7 @@ function displayJoinGameOptions(gameIndex) {
 
 	// var	slot = joinGameCurrentSlots.innerHTML
 
-	joinGameButton.addEventListener('click', function() {
+	joinGameButton.addEventListener('click', function(){
 		if (joinGameCurrentSlots.innerHTML <= 1 ) {
 			joinGameDiv.style.display = "none"
 			console.log("ack")
@@ -120,12 +120,18 @@ function displayJoinGameOptions(gameIndex) {
 			.then(function (response) {
 				console.log('here is the get response data for key:', response.data);
 				currentGame.players--
-				joinGameCurrentSlots.innerHTML = currentGame.players;
+				joinGameCurrentSlots.innerHTML = "Slots Available: " + currentGame.players;
 
 				console.log(currentGame.players)
 			})
 	});
-}
+
+	dontJoinGameButton.addEventListener('click', function() {
+			joinGameDiv.style.display = "none"
+			console.log("goodbye")
+	});
+
+};	
 
 
 // Make slots available a countdown sort of thing that goes down as you join the game. 

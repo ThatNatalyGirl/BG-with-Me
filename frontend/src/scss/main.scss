@@ -22,25 +22,55 @@ header{
 	display: flex;
 	font-family: $header-font;
 	width: 100%;
-	padding: 0% 2%;
+	padding: 10px 2% 0%;
 
-	.logo{
-		background: url(../img/logo.png) top no-repeat;
-		background-size: 100%;
-		width: 12%;	
-		height: 0;
-		padding-bottom: 11%;
+	div{
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		.logo{
+			background: url(../img/logo.png) top no-repeat;
+			background-size: 100%;
+			width: 12%;	
+			height: 0;
+			padding-bottom: 11%;
+			position: absolute;
+			filter: grayscale(0%);
+			transition: .5s;
 
-		&:hover{
-			cursor: pointer;
+			&:hover{
+				cursor: pointer;
+				filter: grayscale(100%);
+			}
+		}
+
+		h1{
+			font-size: 5vw;
+			color: #02906c;
+			padding: 2% 5% 2% 25%;
+			text-shadow: 2px 2px 5px #000;
 		}
 	}
 
-	h1{
-		font-size: 5vw;
-		color: #02906c;
-		padding: 2% 5%;
-		text-shadow: 2px 2px 5px #000;
+	nav{
+		font-size: 2vw;
+		display: flex;
+		flex-direction: column;
+		text-align: right;
+		width: 30%;
+		line-height: 3vw;
+
+		a{
+			text-decoration: none;
+			color: #02906c;
+			transition: .25s;
+
+			&:hover{
+				color: #909582;
+			}
+		}
 	}
 }
 
@@ -138,14 +168,26 @@ header{
 }
 
 .join-game-div{
-	background: pink;
-	width: 96%;
+	background: #d8fff5;
+	width: 90%;
 	padding: 20px 2%;
-	margin: 20px 2%;
+	margin: 20px 5%;
 	font-family: $primary-font;
+	border: 5px solid #909582;
+	border-radius: 10px;
+	position: absolute;
+	top: 20%;
+	transition: 1s;
+
+	@media screen and (min-width: 880px){
+		width: 50%;
+		margin: 20px 25%;
+		top: 30%;
+	}
 
 	.button-div{
 		text-align: center;
+		margin-top: 30px;
 
 		a{
 			text-decoration: none;
@@ -182,7 +224,12 @@ header{
 		bottom: 0;
 		right: 0;
 		position: absolute;
-		z-index: -1;  
+		z-index: -1; 
+		height: 120%; 
+
+		@media screen and (min-width: 880px){
+			height: 165%; 
+		}
 	}
 
 	form{

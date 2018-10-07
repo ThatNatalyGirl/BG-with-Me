@@ -30,13 +30,7 @@ let createNewGame = function(e){
 	.then(function (response) {
 		console.log(response);
 
-		// usernameValue = '';
-		// gameValue = '';
-		// playersValue = '';
-		// locationInfoValue = '';
-		// addressValue = '';
-		// timeValue = '';
-		// descriptionValue = '';
+		window.location.href = "../";
 	})
 	.catch(function (error) {
 		console.log(error);

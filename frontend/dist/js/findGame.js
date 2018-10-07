@@ -115,12 +115,17 @@ function displayJoinGameOptions(gameIndex) {
 		axios.post('http://178.128.76.205:1235/game/' + currentGame.id).then(function (response) {
 			console.log('here is the get response data for key:', response.data);
 			currentGame.players--;
-			joinGameCurrentSlots.innerHTML = currentGame.players;
+			joinGameCurrentSlots.innerHTML = "Slots Available: " + currentGame.players;
 
 			console.log(currentGame.players);
 		});
 	});
-}
+
+	dontJoinGameButton.addEventListener('click', function () {
+		joinGameDiv.style.display = "none";
+		console.log("goodbye");
+	});
+};
 
 // Make slots available a countdown sort of thing that goes down as you join the game. 
 
